@@ -1,6 +1,7 @@
 # Diagram
 This modeling diagram works together the definitions by "Modeling Database III" from modelig.db.md file.
 This model was chosen because solve the challenge, is more clean, fast and easy to maintain.
+This model was completly documented on [Postman](https://documenter.getpostman.com/view/680001/RWMFqn4L).
 
 ## Start call:
 Define the start of call:
@@ -25,12 +26,12 @@ API-->>Client:Return data.
 **Return:**
 ```json
 {
-	"call_id": 1,
+	"id": 1,
 	"start": "2018-01-01T10:00:00+00:00",
 	"source": "41991954421",
 	"destination": "41996754421",
-	"standing_charge": 0.36,
-	"charge_minute": 0.09
+	"standingCharge": 0.36,
+	"chargeMinute": 0.09
 }
 ```
 
@@ -48,7 +49,7 @@ API-->>Client:Return data.
 **Put:**
 ```json
 {
-	"call_id": 1,
+	"id": 1,
 	"timestamp": "2018-01-01T10:30:15+00:00", // (Optional) Insert the current timestamp.
 }
 ```
@@ -56,7 +57,7 @@ API-->>Client:Return data.
 **Return:**
 ```json
 {
-	"callID": 1,
+	"id": 1,
 	"start": "2018-01-01T10:00:00+00:00",
 	"end": "2018-01-01T10:30:15+00:00",
 	"duration": "00:30:00",

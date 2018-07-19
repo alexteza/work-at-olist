@@ -1,0 +1,692 @@
+{
+	"info": {
+		"_postman_id": "86efd03d-0f7a-44d3-a100-2ba57d3b7854",
+		"name": "Telephony Billing",
+		"description": "System to billing the telephony.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "subscribers",
+			"description": "Endpoit that controls the subscribers.",
+			"item": [
+				{
+					"name": "List",
+					"description": "Methods to get one or more subscribers.",
+					"item": [
+						{
+							"name": "List subscribers",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{host}}:{{port}}/subscribers",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"subscribers"
+									]
+								},
+								"description": "List all subscribers."
+							},
+							"response": [
+								{
+									"id": "4bfb3ce3-4f9f-4d95-abc4-0b6dcd04c6df",
+									"name": "List subscribers",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {},
+										"url": {
+											"raw": "{{host}}:{{port}}/subscribers",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"subscribers"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [],
+									"cookie": [],
+									"body": "{\n    \"subscribers\": [\n        \"41987654321\",\n        \"41912345678\"\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Get a subscriber",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{host}}:{{port}}/subscribers/{{subscriberNumber}}",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"subscribers",
+										"{{subscriberNumber}}"
+									]
+								},
+								"description": "Get a subscriber by the subscriber number."
+							},
+							"response": [
+								{
+									"id": "b8c20a33-dfe6-4c21-a392-083bb43463ab",
+									"name": "Get a subscriber",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {},
+										"url": {
+											"raw": "{{host}}:{{port}}/subscribers/{{subscriberNumber}}",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"subscribers",
+												"{{subscriberNumber}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [],
+									"cookie": [],
+									"body": "{\n\t\"subscriber\":\"41987654321\"\n}"
+								}
+							]
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "47106e9d-3c21-48cd-a0db-bbb0923dafdd",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "9885e24c-7320-4d1f-8344-a82ce48684ef",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "54365aeb-dd60-47ac-a485-98fefb99cecf",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "4b50df55-854a-4c81-a661-c0349200544a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Subscribers/Calls",
+			"description": "Endpoit that controls the calls from subscribers.",
+			"item": [
+				{
+					"name": "CRUD",
+					"description": "Methods to create, update or delete calls.",
+					"item": [
+						{
+							"name": "Create a call",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "start",
+											"value": "2018-01-01T10:00:00+00:00",
+											"description": "Call start timestamp",
+											"type": "text"
+										},
+										{
+											"key": "end",
+											"value": "2018-01-01T10:30:15+00:00",
+											"description": "Call end timestamp",
+											"type": "text"
+										},
+										{
+											"key": "destination",
+											"value": "41912345678",
+											"description": "Destination phone number",
+											"type": "text"
+										},
+										{
+											"key": "standingCharge",
+											"value": "0.36",
+											"description": "Start connection fee",
+											"type": "text"
+										},
+										{
+											"key": "chargeMinute",
+											"value": "0.09",
+											"description": "Call charge by minute",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}:{{port}}/subscribers/{{subscriberNumber}}/calls",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"subscribers",
+										"{{subscriberNumber}}",
+										"calls"
+									]
+								},
+								"description": "Registers an already finished call.\n\nIt can be used to seed, registry or import old calls or legacy databases."
+							},
+							"response": [
+								{
+									"id": "5fe3094f-fcd6-4c8d-a138-f485c6e994bf",
+									"name": "Create a call",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "start",
+													"value": "2018-01-01T10:00:00+00:00",
+													"description": "Call start timestamp",
+													"type": "text"
+												},
+												{
+													"key": "end",
+													"value": "2018-01-01T10:30:15+00:00",
+													"description": "Call end timestamp",
+													"type": "text"
+												},
+												{
+													"key": "destination",
+													"value": "41912345678",
+													"description": "Destination phone number",
+													"type": "text"
+												},
+												{
+													"key": "standingCharge",
+													"value": "0.36",
+													"description": "Start connection fee",
+													"type": "text"
+												},
+												{
+													"key": "chargeMinute",
+													"value": "0.09",
+													"description": "Call charge by minute",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}:{{port}}/subscribers/{{subscriberNumber}}/calls",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"subscribers",
+												"{{subscriberNumber}}",
+												"calls"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [],
+									"cookie": [],
+									"body": "{\n\t\"id\": 1,\n\t\"start\": \"2018-01-01T10:00:00+00:00\",\n\t\"end\": \"2018-01-01T10:30:15+00:00\",\n\t\"duration\": \"00:30:15\",\n\t\"source\": \"41987654321\",\n\t\"destination\": \"41912345678\",\n\t\"standingCharge\": 0.36,\n\t\"chargeMinute\": 0.09,\n\t\"price\": 3.06\n}"
+								}
+							]
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "1f437165-91cb-442a-b8ce-fde816b3618f",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "017ff074-7262-4349-ab1c-7c0535358002",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Function",
+					"description": "Methods to call the processes from calls.",
+					"item": [
+						{
+							"name": "Call start",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "timestamp",
+											"value": "2018-01-01T10:00:00+00:00",
+											"description": "Call start timestamp",
+											"type": "text"
+										},
+										{
+											"key": "destination",
+											"value": "41912345678",
+											"description": "Destination phone number\nMask: DDNNNNNNNNN:\n  DD = Area code;\n  NNNNNNNNN = Phone number.",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}:{{port}}/subscribers/{{subscriberNumber}}/calls/start",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"subscribers",
+										"{{subscriberNumber}}",
+										"calls",
+										"start"
+									]
+								},
+								"description": "Create a call with your initial information.\n\n**Attention:** Call the `PATCH: .../calls/{{callID}}/end` method to end the call."
+							},
+							"response": [
+								{
+									"id": "346deb03-8d93-415f-a132-fe3448713043",
+									"name": "Call start",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "timestamp",
+													"value": "2018-01-01T10:00:00+00:00",
+													"description": "Call start timestamp",
+													"type": "text"
+												},
+												{
+													"key": "destination",
+													"value": "41912345678",
+													"description": "Destination phone number\nMask: DDNNNNNNNNN:\n  DD = Area code;\n  NNNNNNNNN = Phone number.",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}:{{port}}/subscribers/{{subscriberNumber}}/calls/start",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"subscribers",
+												"{{subscriberNumber}}",
+												"calls",
+												"start"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"start\": \"2018-01-01T10:00:00+00:00\",\n    \"end\": null, \n    \"duration\": null,\n    \"source\": \"41987654321\",\n    \"destination\": \"41912345678\",\n    \"standingCharge\": 0.36,\n    \"chargeMinute\": 0.09,\n    \"price\": null\n}"
+								}
+							]
+						},
+						{
+							"name": "Call end",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "timestamp",
+											"value": "2018-01-01T10:30:15+00:00",
+											"description": "Call end timestamp",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}:{{port}}/subscribers/{{subscriberNumber}}/calls/{{callID}}/end",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"subscribers",
+										"{{subscriberNumber}}",
+										"calls",
+										"{{callID}}",
+										"end"
+									]
+								},
+								"description": "End a call with your final information."
+							},
+							"response": [
+								{
+									"id": "f207bbaa-7080-48dd-8eb6-a2e7f1b8d667",
+									"name": "Call end",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "timestamp",
+													"value": "2018-01-01T10:30:15+00:00",
+													"description": "Call end timestamp",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}:{{port}}/subscribers/{{subscriberNumber}}/calls/{{callID}}/end",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"subscribers",
+												"{{subscriberNumber}}",
+												"calls",
+												"{{callID}}",
+												"end"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"start\": \"2018-01-01T10:00:00+00:00\",\n    \"end\": \"2018-01-01T10:30:15+00:00\",\n    \"duration\": \"00:30:15\",\n    \"source\": \"41987654321\",\n    \"destination\": \"41912345678\",\n    \"standingCharge\": 0.36,\n    \"chargeMinute\": 0.09,\n    \"price\": 3.06\n}"
+								}
+							]
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "9e238157-d5f2-46a3-bf5e-087287158827",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "51512738-c47e-46b1-bb85-84cdb2525c8b",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "List",
+					"description": "Methods to get one or more calls from a subscribers.",
+					"item": [
+						{
+							"name": "List calls",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{host}}:{{port}}/subscribers/{{subscriberNumber}}/calls?year={{callYear}}&month={{callMonth}}",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"subscribers",
+										"{{subscriberNumber}}",
+										"calls"
+									],
+									"query": [
+										{
+											"key": "year",
+											"value": "{{callYear}}",
+											"description": "Year of calls (0 to 9999)"
+										},
+										{
+											"key": "month",
+											"value": "{{callMonth}}",
+											"description": "Month of calls (1 to 12)"
+										}
+									]
+								},
+								"description": "Lists all calls from a phone number, filtering optionaly a specific year/month or the last closed month if this param is suppressed."
+							},
+							"response": [
+								{
+									"id": "f631bc48-ceeb-47cb-8980-42fed3271ff7",
+									"name": "List calls",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {},
+										"url": {
+											"raw": "{{host}}:{{port}}/subscribers/{{subscriberNumber}}/calls?year={{callYear}}&month={{callMonth}}",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"subscribers",
+												"{{subscriberNumber}}",
+												"calls"
+											],
+											"query": [
+												{
+													"key": "year",
+													"value": "{{callYear}}",
+													"description": "Year of calls (0 to 9999)"
+												},
+												{
+													"key": "month",
+													"value": "{{callMonth}}",
+													"description": "Month of calls (1 to 12)"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [],
+									"cookie": [],
+									"body": "{\n    \"subscriber\": \"41987654321\",\n    \"year\": 2018,\n    \"month\": 1,\n    \"total\": 3.42,\n    \"calls\": [\n        {\n            \"id\": 1,\n            \"start\": \"2018-01-01T10:00:00+00:00\",\n            \"end\": \"2018-01-01T10:30:15+00:00\",\n            \"duration\": \"00:30:15\",\n            \"source\": \"41987654321\",\n            \"destination\": \"41912345678\",\n            \"standingCharge\": 0.36,\n            \"chargeMinute\": 0.09,\n            \"price\": 3.06\n        },\n        {\n            \"id\": 2,\n            \"start\": \"2018-01-02T23:45:00+00:00\",\n            \"end\": \"2018-01-03T00:55:00+00:00\",\n            \"duration\": \"01:10:00\",\n            \"source\": \"41987654321\",\n            \"destination\": \"41912345678\",\n            \"standingCharge\": 0.36,\n            \"chargeMinute\": 0.09,\n            \"price\": 0.36\n        }\n    ]\n}"
+								}
+							]
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ff0992e3-1d5d-4134-8193-4df9b0c2da3a",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "7c6a63f9-66f7-4097-a473-aa014222897d",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "300f90bf-261d-40e0-b9c3-70edf95f783d",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "77f1f215-77bb-404c-acbe-9917b334a0a5",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "09f77404-1183-41f2-9f5c-bbc4643e4406",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "1f4a05ef-7d92-4917-8c53-aa6ead9ac9b6",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "d8f805f8-8eeb-434f-8d30-30a7c75b7607",
+			"key": "host",
+			"value": "localhost",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "b0472767-46b3-46c0-944a-c107b57f8747",
+			"key": "port",
+			"value": "80",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "01cd0feb-6996-4191-be77-9ffa4aa6c0fa",
+			"key": "subscriberNumber",
+			"value": "41987654321",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "3431c8b3-f500-4a0e-a2a8-997eecee96cf",
+			"key": "callID",
+			"value": "1",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "d491d554-8fe7-4dd2-b047-a92e826b59f9",
+			"key": "callYear",
+			"value": "2018",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "5f90a2a9-c94c-495d-a876-f84a5246551a",
+			"key": "callMonth",
+			"value": "7",
+			"type": "string",
+			"description": ""
+		}
+	]
+}
