@@ -1,5 +1,6 @@
 # Diagram
 This modeling diagram works together the definitions by "Modeling Database III" from modelig.db.md file.
+This model was chosen because solve the challenge, is more clean, fast and easy to maintain.
 
 ## Start call:
 Define the start of call:
@@ -55,14 +56,14 @@ API-->>Client:Return data.
 **Return:**
 ```json
 {
-	"call_id": 1,
+	"callID": 1,
 	"start": "2018-01-01T10:00:00+00:00",
 	"end": "2018-01-01T10:30:15+00:00",
-	"duration_minute": 30,
+	"duration": "00:30:00",
 	"source": "41991954421",
 	"destination": "41996754421",
-	"standing_charge": 0.36,
-	"charge_minute": 0.09
+	"standingCharge": 0.36,
+	"chargeMinute": 0.09,
 	"price": 3.06
 }
 ```
@@ -73,7 +74,7 @@ List the telephone bill by period:
 ```mermaid
 sequenceDiagram
 Operator-->>API:Get telephone bill
-API->>Database:Select call join detail
+API->>Database:Select calls
 Database->>API:Return dataset
 API-->>Operator:Return data
 ```
@@ -82,28 +83,28 @@ API-->>Operator:Return data
 ```json
 {
 	"source": "41991954421",
-	"period": "01/2018" // (Optional) Get the last closed month.
+	"year": 2018, (Optional) Get the last closed year.
+	"month": 1 (Optional) Get the last closed month.
 }
 ```
 **Return:**
 ```json
 {
-  "source": "41 99195-4421",
-  "period": "01/2018",
+  "source": "41991954421",
+  "periodStart": "2018-01-01",
+  "periodEnd": "2018-01-31",
   "calls": [
     {
-      "destination": "41 99675-4421",
-      "start_date": "01/01/2018",
-      "start_time": "10:00:00",
-      "duration_minute": "0h30m0s",
-      "price": "R$ 3.06"
+      "destination": "41996754421",
+      "start": "2018-01-01",
+      "duration": "00:30:00",
+      "price": 3.06
     },
     {
-      "destination": "41 99675-4421",
-      "start_date": "02/01/2018",
-      "start_time": "16:00:00",
-      "duration_minute": "0h5m12s",
-      "price": "R$ 0.81"
+      "destination": "41996754421",
+      "start": "2018-01-02",
+      "duration": "00:05:12",
+      "price": 0.81
     }
   ]
 }
